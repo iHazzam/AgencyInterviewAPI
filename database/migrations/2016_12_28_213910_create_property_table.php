@@ -18,7 +18,7 @@ class CreatePropertyTable extends Migration
             $table->integer('uid')->unsigned();//foriegn key to users table
             $table->string('name');
             $table->float('lat', 10, 6); //as recommended in google dev docs https://developers.google.com/maps/documentation/javascript/mysql-to-maps#createtable
-            $table->float('long', 10, 6);
+            $table->float('lng', 10, 6);
             $table->decimal('value', 11, 2);//currency, up to 9,999,999,999.99
         });
     }
@@ -30,6 +30,6 @@ class CreatePropertyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('properties');
     }
 }

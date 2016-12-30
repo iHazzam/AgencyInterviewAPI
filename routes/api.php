@@ -37,7 +37,7 @@ Route::group(['prefix' => '/public/'], function(){
 
 
     //POST: Create user
-
+        Route::post('/user/create/{name}/{email}/{password}', 'AccountsController@newUserAPI');
 
     //POST: update property (pid, key)
         Route::post('/properties/update/{pid}/{key}','PropertyController@updateProperty');

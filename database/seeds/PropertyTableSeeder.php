@@ -15,7 +15,7 @@ class PropertyTableSeeder extends Seeder
                     'uid' => $i,
                     'name' => $faker->secondaryAddress,
                     'lat' => $faker->latitude,
-                    'long' => $faker->longitude,
+                    'lng' => $faker->longitude,
                     'value' => $faker->randomFloat(2,0,9999999)
                 ]);
             }
