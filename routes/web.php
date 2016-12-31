@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ApplicationController@showWelcome');
+Route::get('/manage', 'ApplicationController@manageAPI');
+Auth::routes();
+
+Route::get('/home', 'ApplicationController@index');
