@@ -40,7 +40,7 @@ Route::group(['prefix' => '/public/'], function(){
         Route::post('/user/create/{name}/{email}/{password}', 'AccountsController@newUserAPI');
 
     //POST: update property (pid, key)
-        Route::post('/properties/update/{pid}/{key}','PropertyController@updateProperty');
+        Route::post('/properties/update/{pid}','PropertyController@updateProperty');
 
 });
 //API 2 (private) group
