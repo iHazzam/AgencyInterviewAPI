@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'ApplicationController@showWelcome');
-Route::get('/manage', 'ApplicationController@manageAPI');
+Route::get('/manageAPI', 'ApplicationController@manageAPI')->middleware('admin');
 Auth::routes();
 
 Route::get('/home', 'ApplicationController@index');
+

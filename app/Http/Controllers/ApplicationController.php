@@ -21,7 +21,7 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showWelcome()
     {
         return view('home');
     }
@@ -32,7 +32,9 @@ class ApplicationController extends Controller
      */
     public function manageAPI()
     {
-        return view('manage_api');
+        return view('manageapi');
     }
+
+
 
 }
