@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+use App\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Faker\Factory as Faker;
+
+class RegisterController extends \App\Http\Controllers\APIController
 {
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:3|confirmed',
         ]);
     }
 
@@ -69,4 +71,47 @@ class RegisterController extends Controller
             'api_token' => str_random(60)
         ]);
     }
+
+    public function newUserAPI(Request $request)
+    {
+        $qs = $request->all();
+        $validator = Validator::make($request->all(),[
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|min:3',
+
+        ]);
+        if($validator->fails())
+        {
+            return $this->respond400($validator->errors()->first());
+            //return correct json errors
+        }
+        else{
+            $user = User::create([
+                'name' => $qs['name'],
+                'email' => $qs['email'],
+                'password' => bcrypt($qs['password']),
+                'api_token' =>  str_random(60)
+            ]);
+            return $this->respond200("Success!");
+        }
+    }
+
+    public function createProperty($uid)
+    {
+        $faker = Faker::create();
+        Property::create([
+            'uid' => $uid,
+            'name' => $faker->secondaryAddress,
+            'lat' => $faker->latitude(50,58),
+            'lng' => $faker->longitude(-10,1),
+            'value' => $faker->randomFloat(2,0,9999999)
+        ]);
+
+    }
+
+
+
+
+
 }

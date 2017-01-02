@@ -30,6 +30,14 @@ class APIController extends Controller
             'status' => 500
         ]);
     }
+    //Input validation error
+    public function respond400($message = "Input Validation Error")
+    {
+        return response()->json([
+            'error_message' => $message,
+            'status' => 400
+        ]);
+    }
     //Success!
     public function respond200($data)
     {

@@ -35,6 +35,9 @@ class ApplicationController extends Controller
         return view('manageapi');
     }
 
-
+    public function map()
+    {
+        return view('map');
+    }
 
 }

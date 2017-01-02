@@ -23,8 +23,8 @@ Route::get('/user', function (Request $request) {
 
 //API 1 (public) group
 Route::group(['prefix' => '/public/'], function(){
-    //GET: Login
-
+    //GET: Login returns api key
+        Route::get('/user/login', 'Auth\LoginController@logInAPI');
 
     //GET: List of properties
         Route::get('/properties', 'PropertyController@getProperties');
@@ -37,7 +37,7 @@ Route::group(['prefix' => '/public/'], function(){
 
 
     //POST: Create user
-        Route::post('/user/create/{name}/{email}/{password}', 'AccountsController@newUserAPI');
+        Route::post('/user/create', 'Auth\RegisterController@newUserAPI');
 
     //POST: update property (pid, key)
         Route::post('/properties/update/{pid}','PropertyController@updateProperty');

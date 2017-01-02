@@ -13,7 +13,7 @@
 
 Route::get('/', 'ApplicationController@showWelcome');
 Route::get('/manageAPI', 'ApplicationController@manageAPI')->middleware('admin');
+Route::get('/map','ApplicationController@map');
 Auth::routes();
 
-Route::get('/home', 'ApplicationController@index');
 

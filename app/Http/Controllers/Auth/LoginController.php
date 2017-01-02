@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
-class LoginController extends Controller
+use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+class LoginController extends \App\Http\Controllers\APIController
 {
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,24 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function logInAPI(Request $request)
+    {
+        $qs = $request->all();
+        if((array_key_exists("email",$qs) )&&(array_key_exists("password",$qs)))
+        {
+            $user = User::where('email', '=', $qs['email'])->first();
+            if(Auth::attempt(['email' => $qs['email'], 'password' => $qs['password']]))
+            {
+                return $this->respond200($user->api_token);
+            }
+            else{
+                return $this->respond401("Invalid password entered");
+            }
+        }
+        else{
+            return $this->respond400("Must provide username and password");
+        }
     }
 }

@@ -12,7 +12,7 @@ class Admin {
             return $next($request);
         }
 
-        return redirect('home');
+        return redirect('/')->with('status', 'You need to be an administrator to access this part of the site!');
 
     }
 

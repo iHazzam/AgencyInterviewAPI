@@ -12,7 +12,7 @@ class PropertyController extends APIController
     //GET
     public function getProperties()
     {
-        return $this->respond404(Property::paginate(20));
+        return $this->respond200(Property::paginate(20));
     }
     public function getPropertiesByUID($id)
     {
