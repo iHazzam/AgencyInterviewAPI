@@ -17,6 +17,3 @@ Route::get('/map','ApplicationController@map');
 Auth::routes();
 
 
-Route::get('/map/{id}','ApplicationController@ajaxMapByUser');
-
-

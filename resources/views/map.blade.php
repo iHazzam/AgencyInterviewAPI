@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div style="display:none;"><script >var place_array = <?php echo json_encode($properties) ?>;</script></div>
+
 @endsection
 @section('js')
 

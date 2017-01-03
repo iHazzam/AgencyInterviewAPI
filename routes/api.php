@@ -35,7 +35,6 @@ Route::group(['prefix' => '/public/'], function(){
     //GET: Properties in radius(Lat, long, rad)
         Route::get('/properties/rad/{lat}/{long}/{rad}', 'PropertyController@getPropertiesInRad');
 
-
     //POST: Create user
         Route::post('/user/create', 'Auth\RegisterController@newUserAPI');
 
@@ -45,6 +44,6 @@ Route::group(['prefix' => '/public/'], function(){
 });
 //API 2 (private) group
 Route::group(['prefix' => '/private/', 'middleware' => 'auth:api_int'], function(){
-
+    Route::get('/users', 'UserController@getUsers');
 
 });
