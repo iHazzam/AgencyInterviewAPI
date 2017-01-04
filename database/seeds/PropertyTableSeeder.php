@@ -11,11 +11,12 @@ class PropertyTableSeeder extends Seeder
         foreach(range(1,22) as $i)//now 22 users, (20+2 admins)
         {
             for($j = 0; $j < 3; $j++){
+                $json = json_decode(file_get_contents('https://api.postcodes.io/random/postcodes'), true);
                 Property::create([
                     'uid' => $i,
                     'name' => $faker->secondaryAddress,
-                    'lat' => $faker->latitude(50,58), //these can be in the sea. Should use api.postcodes.io/random/postcodes if I want them not to be
-                    'lng' => $faker->longitude(-10,1),
+                    'lat' => $json['result']['latitude'],
+                    'lng' => $json['result']['longitude'],
                     'value' => $faker->randomFloat(2,0,9999999)
                 ]);
             }

@@ -8,6 +8,6 @@ class Property extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['uid','name','lat','long','value'];
+    protected $fillable = ['uid','name','lat','lng','value'];
 
 }

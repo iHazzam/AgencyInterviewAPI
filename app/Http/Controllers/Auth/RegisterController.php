@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Property;
 use Faker\Factory as Faker;
 
 class RegisterController extends \App\Http\Controllers\APIController
@@ -64,12 +65,18 @@ class RegisterController extends \App\Http\Controllers\APIController
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'api_token' => str_random(60)
         ]);
+        for($i = 0;$i<3; $i++)
+        {
+            $this->createProperty($user->id);
+        }
+        return $user;
+
     }
 
     public function newUserAPI(Request $request)
@@ -93,6 +100,10 @@ class RegisterController extends \App\Http\Controllers\APIController
                 'password' => bcrypt($qs['password']),
                 'api_token' =>  str_random(60)
             ]);
+            for($i = 0;$i<3; $i++)
+            {
+                $this->createProperty($user->id);
+            }
             return $this->respond200("Success!");
         }
     }
@@ -100,11 +111,12 @@ class RegisterController extends \App\Http\Controllers\APIController
     public function createProperty($uid)
     {
         $faker = Faker::create();
+        $json = json_decode(file_get_contents('https://api.postcodes.io/random/postcodes'), true);
         Property::create([
             'uid' => $uid,
             'name' => $faker->secondaryAddress,
-            'lat' => $faker->latitude(50,58),
-            'lng' => $faker->longitude(-10,1),
+            'lat' => $json['result']['latitude'],
+            'lng' => $json['result']['longitude'],
             'value' => $faker->randomFloat(2,0,9999999)
         ]);
 

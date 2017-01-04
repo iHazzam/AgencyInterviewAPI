@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UserController extends APIController
 {
-    //GET
+    //Get a list of users mapped to their UID - potential security flaw - shouldn't really expose UID to public api
     public function getUsers()
     {
         $users_coll = User::all();

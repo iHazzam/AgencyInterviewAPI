@@ -19,16 +19,16 @@
 
                                 <div class="tab-content">
                                     <p>See all properties on the map! Click the icons to see more</p>
-                                    <input class="button" name="Refresh Map" type="submit" value="submit1" onclick=" event.preventDefault(); initMap()" />
+                                    <input class="button" name="submit1" type="submit" value="Refresh Map" onclick=" event.preventDefault(); initMap()" />
                                     <div id="tab1" class="tab">
                                         <p>See all properties on the map! Click the icons to see more</p>
-                                        <input class="button" name="Refresh Map" type="submit" value="submit1" onclick=" event.preventDefault(); initMap()" />
+                                        <input class="button" name="submit1" type="submit" value="Refresh Map" onclick=" event.preventDefault(); initMap()" />
                                     </div>
 
                                     <div id="tab2" class="tab">
                                         <p>See your own properties on the map</p>
                                         <input type="hidden" id="uid" name="uid" value="{{Auth::user()->id}}" />
-                                        <input class="button" name="Refresh Map" type="submit" value="submit2" onclick="event.preventDefault(); regenerateMapID()" />
+                                        <input class="button" name="submit2" type="submit" value="Refresh Map" onclick="event.preventDefault(); regenerateMapID()" />
                                     </div>
 
                                     <div id="tab3" class="tab">
@@ -45,7 +45,7 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <input class="button" name="Search" type="submit" value="submit3" onclick="event.preventDefault(); regenerateMapPostcodeRadius()" />
+                                        <input class="button" name="submit3" type="submit" value="Search" onclick="event.preventDefault(); regenerateMapPostcodeRadius()" />
                                     </div>
                                 </div>
                             </div>

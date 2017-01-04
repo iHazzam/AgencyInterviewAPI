@@ -6,6 +6,8 @@ use App\Property;
 use App\User;
 use Illuminate\Http\Request;
 
+//Handles routes for the web app. Completely unnecessary for this application as all logic handled via API calls to my
+//Own api but in future logic could go in here if required.
 class ApplicationController extends Controller
 {
     /**
@@ -43,16 +45,3 @@ class ApplicationController extends Controller
         return view('map');
     }
 }
-//
-//$properties_collection = Property::all();
-////name,value,owner,lati,lngi
-//$properties = array();
-//foreach ($properties_collection as $i => $p) {
-//    $temp['name'] = $p->name;
-//    $temp['value'] = $p->value;
-//    $user = User::where('id', '=', $p->uid)->first();
-//    $temp['owner'] = $user->name;
-//    $temp['lati'] = $p->lat;
-//    $temp['lngi'] = $p->lng;
-//    $properties[] = $temp;
-//}
