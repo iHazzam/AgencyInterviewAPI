@@ -65,7 +65,7 @@ Run the commands:
 ### Step 3: Create database
 
 	 * Create a database on your local dev environment
-	 * Download .env.example and rename it to .env, updating connection, database name, username and password in the file to the values you wish to use
+	 * Download .env.example and rename it to .env, updating connection, database name, username and password in the file to the values you wish to use. If App Key isn't auto-generated (see https://github.com/laravel/framework/issues/9080), please run php artisan key:generate 
 -----
 <a name="step4"></a>
 ### Step 4: Migrate database
@@ -78,7 +78,7 @@ To seed the database, please run:
 
     php artisan db:seed
 
-(If required, configure your web server to have Laravel at the correct document root, or append 'public/' to the start of any API requests you make)
+(If required, configure your web server to have Laravel at the correct document root, or append 'public/' to the start of any API requests you make.)
 
 -----
 <a name="step5"></a>
