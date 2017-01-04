@@ -1,6 +1,6 @@
-# iHazzam/CyberDuckAPI - Submission for coding challenge
+# iHazzam/WebAgencyAPI - Submission for coding challenge
 
-## API based site built on Laravel 5.3
+## API based property/user site built on Laravel 5.3
 * [Features](#feature1)
 * [Requirements](#feature2)
 * [How to install](#feature3)
