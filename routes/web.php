@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ApplicationController@showWelcome');
+Route::get('/manageAPI', 'ApplicationController@manageAPI')->middleware('admin');
+Route::get('/map','ApplicationController@map');
+Auth::routes();
+
+

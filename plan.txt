@@ -1,0 +1,33 @@
+
+
+
+User HAS MANY Property
+
+User: 
+	UID	
+	Name
+	Key (random)
+	Email(unique, valid)
+	Password (min 3)
+	
+Property:
+	PID 
+	UID
+	Lat
+	Long
+
+
+API
+
+POST:
+	- createUser 
+	- (id, key) update lat/long/field on property  
+
+GET:
+	- List of properties
+	- (id) properties of user
+	- Lat/long/Rad properties in given radius
+
+Login - email password auth, return key
+Map View - GOogle Maps, properties shown
+
