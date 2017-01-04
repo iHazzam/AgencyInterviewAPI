@@ -35,15 +35,20 @@ Route::group(['prefix' => '/public/'], function(){
     //GET: Properties in radius(Lat, long, rad)
         Route::get('/properties/rad/{lat}/{long}/{rad}', 'PropertyController@getPropertiesInRad');
 
+    //GET: List of users and UIDs (to convert between them)
+        Route::get('/users', 'UserController@getUsers');
+
     //POST: Create user
         Route::post('/user/create', 'Auth\RegisterController@newUserAPI');
 
     //POST: update property (pid, key)
         Route::post('/properties/update/{pid}','PropertyController@updateProperty');
 
+
 });
 //API 2 (private) group
-Route::group(['prefix' => '/private/', 'middleware' => 'auth:api_int'], function(){
-    Route::get('/users', 'UserController@getUsers');
+
+Route::group(['prefix' => '/private/', 'middleware' => 'privateapi'], function(){
+    Route::get('/admin/list', 'UserController@getListOfAdminUsers');//must have email and key in query string
 
 });

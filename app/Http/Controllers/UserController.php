@@ -7,12 +7,12 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class PropertyController extends APIController
+class UserController extends APIController
 {
     //GET
     public function getUsers()
     {
-        $users_coll = Users::all();
+        $users_coll = User::all();
         $users = array();
         foreach($users_coll as $user)
         {

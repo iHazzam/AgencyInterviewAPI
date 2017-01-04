@@ -8,7 +8,7 @@ class PropertyTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach(range(1,20) as $i)
+        foreach(range(1,22) as $i)//now 22 users, (20+2 admins)
         {
             for($j = 0; $j < 3; $j++){
                 Property::create([

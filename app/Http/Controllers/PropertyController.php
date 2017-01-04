@@ -12,6 +12,10 @@ class PropertyController extends APIController
     //GET
     public function getProperties()
     {
+        return $this->respond200(Property::all());
+    }
+    public function getPropertiesPaginated()
+    {
         return $this->respond200(Property::paginate(20));
     }
     public function getPropertiesByUID($id)
@@ -30,7 +34,14 @@ class PropertyController extends APIController
     public function getPropertiesInRad($lat, $long, $rad)
     {
         try{
-            $propertylist = DB::select(DB::raw('SELECT pid, ( 3959 * acos( cos( radians(' . $lat . ') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(' . $long . ') ) + sin( radians(' . $lat . ') ) * sin( radians(lat) ) ) ) AS distance FROM properties HAVING distance < ' . $rad . ' ORDER BY distance'));
+            $propertylist1 = DB::select(DB::raw('SELECT pid, ( 3959 * acos( cos( radians(' . $lat . ') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(' . $long . ') ) + sin( radians(' . $lat . ') ) * sin( radians(lat) ) ) ) AS distance FROM properties HAVING distance < ' . $rad . ' ORDER BY distance'));
+
+            $propertyarray = array();
+            foreach($propertylist1 as $p)
+            {
+                $propertyarray[] = Property::where('pid','=',$p->pid)->first();
+            }
+             $propertylist = $propertyarray;
         }
         catch(\Exception $e)
         {

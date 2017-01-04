@@ -18,6 +18,12 @@ class UsersTableSeeder extends Seeder
                 'api_token' =>  str_random(60)
             ]);
         }
-
+        User::create([
+            'name' => 'Harry Messenger',
+            'email' => 'Harry@harrymessenger.co.uk',
+            'password' => bcrypt('harry123'),
+            'api_token' =>  str_random(60),
+            'admin' => true
+        ]);
     }
 }
