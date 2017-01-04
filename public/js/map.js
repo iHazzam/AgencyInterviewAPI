@@ -20,13 +20,14 @@ function initMap() {
                         //console.log(place_array[x], x);
                         var obj = place_array[x];
                         name_str = obj.name;
+                        pid_str = obj.pid;
                         value_str = obj.value;
                         owner_str = obj.owner;
                         lati = obj.lati;
                         lngi = obj.lngi;
                         contentString =
                             '<div id="holder">' +
-                            '<h3 class="boldme">Property name: ' + name_str + '</h3>' +
+                            '<h3 class="boldme">Property name: ' + name_str +' (ID: '+ pid_str + ')</h3>' +
                             '<h4 class="boldme">(Property value: ' + value_str + ')</h4>' +
                             '<hr width="60%">' +
                             '<h4 class="boldme">Owner name:</h4>' +
@@ -79,14 +80,15 @@ function regenerateMapID()
                         //console.log(newplaces[i]);
                         var obj = newplaces[i];
                         name_str = obj.name;
+                        pid_str = obj.pid;
                         value_str = obj.value;
                         owner_str = obj.owner;
                         lati = obj.lati;
                         lngi = obj.lngi;
                         contentString =
                             '<div id="holder">'+
-                            '<h3 class="boldme">Property name:' + name_str +'</h3>'+
-                            '<h4 class="boldme">(Property value:' + value_str + ')</h4>'+
+                            '<h3 class="boldme">Property name: ' + name_str +' (ID: '+ pid_str + ')</h3>'+
+                            '<h4 class="boldme">(Property value: ' + value_str + ')</h4>'+
                             '<hr width="60%">'+
                             '<h4 class="boldme">Owner name:</h4>'+
                             '<p>'+ owner_str +'</p>'+
@@ -135,6 +137,7 @@ function regenerateMapPostcodeRadius()
                            var infowindow = new google.maps.InfoWindow();
                            for (i = 0; i < Object.keys(newplaces).length-1; i++) {
                                var obj = newplaces[i];
+                               pid_str = obj.pid;
                                name_str = obj.name;
                                value_str = obj.value;
                                owner_str = obj.owner;
@@ -142,8 +145,8 @@ function regenerateMapPostcodeRadius()
                                lngi = obj.lngi;
                                contentString =
                                    '<div id="holder">'+
-                                   '<h3 class="boldme">Property name:' + name_str +'</h3>'+
-                                   '<h4 class="boldme">(Property value:' + value_str + ')</h4>'+
+                                   '<h3 class="boldme">Property name: ' + name_str +' (ID: '+ pid_str + ')</h3>'+
+                                   '<h4 class="boldme">(Property value: ' + value_str + ')</h4>'+
                                    '<hr width="60%">'+
                                    '<h4 class="boldme">Owner name:</h4>'+
                                    '<p>'+ owner_str +'</p>'+
@@ -177,6 +180,7 @@ function formatPlaceData(properties, users) {
     for (var k in properties) {
         formattedProperties[k] = {
             name : properties[k]['name'],
+            pid : properties[k]['pid'],
             value : '£' + properties[k]['value'],
             owner : users[properties[k]['uid']],
             lati : properties[k]['lat'],
