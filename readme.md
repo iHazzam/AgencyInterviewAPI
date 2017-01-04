@@ -56,6 +56,7 @@ Extract or clone the code in the correct directory of your web server (Only test
 <a name="step2"></a>
 ### Step 2: Use Composer to install dependencies
 Run the commands: 
+
     composer dump-autoload
     composer install 
 
