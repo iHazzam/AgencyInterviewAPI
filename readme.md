@@ -64,8 +64,8 @@ Run the commands:
 <a name="step3"></a>
 ### Step 3: Create database
 
- * Create a database on your local dev environment
- * Download .env.example and rename it to .env, updating connection, database name, username and password in the file to the values you    wish to use
+	 * Create a database on your local dev environment
+	 * Download .env.example and rename it to .env, updating connection, database name, username and password in the file to the values you wish to use
 -----
 <a name="step4"></a>
 ### Step 4: Migrate database
